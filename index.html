@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onco Care</title>
+<meta name="description" content="Onco Care — Learn to Live Beyond Disease">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎗️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Outfit:wght@400;500&family=Gilda+Display&display=swap" rel="stylesheet">
+<!-- NOTE: all text lives in content.js — edit that file, not this one. -->
+<style>
+  :root{
+    --beige:#e8dfda; --ink:#1f1d1d; --muted:#4a4545; --paper:#ffffff; --soft:#f5f4f4;
+    --sans:"Montserrat",system-ui,sans-serif; --display:"Outfit",system-ui,sans-serif; --serif:"Gilda Display",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{font-family:var(--sans);color:var(--ink);background:var(--beige);line-height:1.75;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:10;background:var(--beige);padding:18px 0}
+  nav ul{list-style:none;display:flex;justify-content:space-between;gap:16px}
+  nav a{display:block;min-width:150px;text-align:center;padding:9px 18px;background:var(--paper);color:var(--ink);text-decoration:none;
+        font-weight:800;letter-spacing:.08em;font-size:.88rem;border:1.5px solid var(--ink);border-radius:10px;
+        box-shadow:-4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+  nav a:hover{transform:translate(-2px,2px);box-shadow:-2px 2px 0 var(--ink)}
+
+  /* HERO */
+  .hero{margin:20px 0 70px;border:1px solid var(--muted);padding:16px;display:grid;grid-template-columns:1fr 1.25fr;gap:24px;min-height:540px}
+  .hero-text{padding:50px 40px}
+  .hero h1{font-family:var(--display);font-weight:500;font-size:clamp(2.8rem,6vw,4.8rem);line-height:1.05;letter-spacing:-.01em}
+  .hero p{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.5rem);margin-top:28px}
+  .hero img{width:100%;height:100%;object-fit:cover}
+
+  /* SECTIONS */
+  section.block{background:var(--paper);padding:80px 0}
+  section.block.alt{background:var(--soft)}
+  .label{font-weight:700;letter-spacing:.14em;font-size:1.3rem;padding-bottom:18px;border-bottom:1px solid var(--ink);margin-bottom:40px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.2;margin-bottom:22px}
+  h2.has-icon{display:flow-root}
+  .title-icon{float:right;width:clamp(70px,9vw,110px);margin:-10px 0 6px 16px}
+  .rich p{margin-bottom:1.1em;font-size:1.06rem;color:#2b2828}
+  .rich ul{margin:0 0 1.1em 1.3em}
+  .rich li{margin-bottom:.2em;font-size:1.06rem}
+
+  .post{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .post.flip .post-media{order:2}
+  .post.no-img{grid-template-columns:1fr;max-width:820px}
+  .post-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .page-intro{font-size:1.15rem;color:var(--muted);margin-bottom:24px}
+
+  /* ABOUT */
+  .about{position:relative;min-height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+         background-size:cover;background-position:center;padding:80px 24px;text-align:center}
+  .about::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.55)}
+  .about>*{position:relative}
+  .about-box{border:1px solid var(--ink);width:min(1180px,100%);padding:110px 24px}
+  .about-box .kicker{letter-spacing:.14em;font-size:1.1rem}
+  .about-box h2{font-size:clamp(3.5rem,10vw,7.5rem);margin:0}
+  .about-box .rich{max-width:640px;margin:20px auto 0}
+  .contact{margin-top:28px}
+  .contact .kicker{letter-spacing:.14em;padding:0 30px 6px;border-bottom:1px solid var(--muted);display:inline-block}
+  .contact a{display:block;margin-top:8px;color:var(--ink);font-weight:500;text-decoration:none}
+  .contact a:hover{text-decoration:underline}
+  footer{text-align:center;padding:24px;font-size:.85rem;color:var(--muted)}
+
+  /* MOBILE */
+  @media (max-width:860px){
+    nav ul{overflow-x:auto;justify-content:flex-start;padding:4px 4px 8px 8px}
+    nav a{min-width:auto;font-size:.78rem;padding:8px 14px}
+    .hero{grid-template-columns:1fr;min-height:0}
+    .hero-text{padding:30px 10px 10px}
+    .post,.post.flip{grid-template-columns:1fr;gap:28px}
+    .post.flip .post-media{order:0}
+    section.block{padding:56px 0}
+    .about-box{padding:70px 16px}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap"><ul>
+  <li><a href="#home">HOME</a></li>
+  <li><a href="#blog">BLOG</a></li>
+  <li><a href="#research">RESEARCH</a></li>
+  <li><a href="#stories">STORIES</a></li>
+  <li><a href="#about">ABOUT</a></li>
+</ul></div></nav>
+
+<main id="site"></main>
+<footer id="footer"></footer>
+
+<script src="content.js"></script>
+<script>
+  // Turns the simple text in content.js into web page text.
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+  function rich(text){
+    const lines=String(text||"").trim().split("\n");
+    let html="",para=[],list=[];
+    const bold=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+    const flushP=()=>{if(para.length){html+="<p>"+bold(para.join(" "))+"</p>";para=[]}};
+    const flushL=()=>{if(list.length){html+="<ul>"+list.map(l=>"<li>"+bold(l)+"</li>").join("")+"</ul>";list=[]}};
+    for(const raw of lines){
+      const line=raw.trim();
+      if(!line){flushP();flushL();continue}
+      if(/^[-•]\s+/.test(line)){flushP();list.push(line.replace(/^[-•]\s+/,""));}
+      else{flushL();para.push(line)}
+    }
+    flushP();flushL();
+    return html;
+  }
+  const S=SITE;
+  document.title=S.name;
+
+  let html=`
+  <div class="wrap" id="home">
+    <header class="hero">
+      <div class="hero-text"><h1>${esc(S.name)}</h1><p>${esc(S.tagline)}</p></div>
+      ${S.heroImage?`<img src="${esc(S.heroImage)}" alt="">`:""}
+    </header>
+  </div>`;
+
+  S.blog.forEach((post,i)=>{
+    const hasImg=!!post.image;
+    html+=`
+    <section class="block ${i%2?"alt":""}" ${i===0?'id="blog"':""}>
+      <div class="wrap">
+        <div class="post ${i%2?"flip":""} ${hasImg?"":"no-img"}">
+          ${hasImg?`<div class="post-media"><div class="label">BLOG</div><img src="${esc(post.image)}" alt="${esc(post.title)}" loading="lazy"></div>`:""}
+          <div>${hasImg?"":'<div class="label">BLOG</div>'}<h2 class="${post.icon?"has-icon":""}">${post.icon?`<img class="title-icon" src="${esc(post.icon)}" alt="">`:""}${esc(post.title)}</h2><div class="rich">${rich(post.text)}</div></div>
+        </div>
+      </div>
+    </section>`;
+  });
+
+  [["research","RESEARCH",S.research],["stories","STORIES",S.stories]].forEach(([id,label,d],i)=>{
+    html+=`
+    <section class="block ${(S.blog.length+i)%2?"alt":""}" id="${id}">
+      <div class="wrap" style="max-width:900px">
+        <div class="label">${label}</div>
+        ${d.intro?`<p class="page-intro">${esc(d.intro)}</p>`:""}
+        <div class="rich">${rich(d.text)}</div>
+      </div>
+    </section>`;
+  });
+
+  html+=`
+  <section class="about" id="about" style="${S.about.image?`background-image:url('${esc(S.about.image)}')`:""}">
+    <div class="about-box">
+      <div class="kicker">ABOUT</div>
+      <h2>${esc(S.name.replace(/\s+/g,""))}</h2>
+      <div class="rich">${rich(S.about.text)}</div>
+    </div>
+    <div class="contact">
+      <div class="kicker">EMAIL ID</div>
+      <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>
+    </div>
+  </section>`;
+
+  document.getElementById("site").innerHTML=html;
+  document.getElementById("footer").textContent="© "+new Date().getFullYear()+" "+S.name;
+</script>
+</body>
+</html>
